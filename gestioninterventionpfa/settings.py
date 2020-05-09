@@ -76,7 +76,16 @@ WSGI_APPLICATION = 'gestioninterventionpfa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pfa_bd',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'root',
+    }
+}
  
 
 # Password validation
