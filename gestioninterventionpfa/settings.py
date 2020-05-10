@@ -79,12 +79,13 @@ WSGI_APPLICATION = 'gestioninterventionpfa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pfa_bd',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'gestionintervention',
         'USER': 'root',
         'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '8889',
     }
+   
 }
  
 
