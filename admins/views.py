@@ -1,6 +1,7 @@
 from django.shortcuts import render,HttpResponse , redirect
 from django.contrib.auth.decorators import login_required
 from globals.models import *
+from .forms import technicienform
 
 def home(request):
     return render(request, 'admins/index.html')
@@ -14,10 +15,18 @@ def equipement(request):
     return render(request, 'admins/equipement.html')
 def ticket(request):
     return render(request, 'admins/ticket.html')
+
+
+#crud technicien
+
+def forms_technicien(request):
+    form = technicienform(request.POST)
+    return render(request, 'admins/forms/form_technicien.html',{'form':form})
+
+
 def supp_tech(request,pk):
     technicien = Technicien.objects.get(id=pk)
-    technicien.delete()
-    
+    technicien.delete()    
     return redirect('technicien')
     
 def technicien(request):

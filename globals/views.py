@@ -7,8 +7,6 @@ from django.http import HttpResponse,HttpResponseRedirect
 from admins import views
 from django.contrib import messages
 
-
-
 # Create your views here.
 
 def checkclient(login,password):
