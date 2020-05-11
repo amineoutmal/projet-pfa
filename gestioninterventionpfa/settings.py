@@ -26,8 +26,7 @@ SECRET_KEY = 'x-yhub!z=me2m7uo^^67ym9ht)+n4ye(o!bzcmyw@+y@=kv^q7'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+LOGIN_REDIRECT_URL =  'admin/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admins',
-    'global',
+    'globals',
     'technicien',
 ]
 

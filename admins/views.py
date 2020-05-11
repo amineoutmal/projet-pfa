@@ -1,18 +1,20 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from globals.models import *
 
 def home(request):
-    return render(request, 'admin/index.html')
+    return render(request, 'admins/index.html')
 def client(request):
-    return render(request, 'admin/client.html')
+    return render(request, 'admins/client.html')
 def intervention(request):
-    return render(request, 'admin/intervention.html')
+    return render(request, 'admins/intervention.html')
 def stock(request):
-    return render(request, 'admin/stock.html')
+    return render(request, 'admins/stock.html')
 def equipement(request):
-    return render(request, 'admin/equipement.html')
+    return render(request, 'admins/equipement.html')
 def ticket(request):
-    return render(request, 'admin/ticket.html')
+    return render(request, 'admins/ticket.html')
 def technicien(request):
-    return render(request, 'admin/technicien.html')
+    technicien = Technicien.objects.all()
+    context= {'technicien':technicien}
+    return render(request, 'admins/technicien.html',context)
