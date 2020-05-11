@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse , redirect
 from django.contrib.auth.decorators import login_required
 from globals.models import *
 
@@ -14,6 +14,12 @@ def equipement(request):
     return render(request, 'admins/equipement.html')
 def ticket(request):
     return render(request, 'admins/ticket.html')
+def supp_tech(request,pk):
+    technicien = Technicien.objects.get(id=pk)
+    technicien.delete()
+    
+    return redirect('technicien')
+    
 def technicien(request):
     technicien = Technicien.objects.all()
     context= {'technicien':technicien}

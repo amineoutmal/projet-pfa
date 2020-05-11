@@ -6,10 +6,11 @@
       <table class="table">
         <thead>
           <tr>
-            <th>nom</th>
-            <th>email</th>
-            <th>tel</th>
-            <th>societe</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Societe</th>
+            <th ></th>
            
           </tr>
         </thead>
@@ -25,7 +26,13 @@
               {% else %}
               <td>{{tc.societe}}</td>
               {% endif %}
+              
+              
+              <td><button type="button" class="btn btn-success btn-sm">Modifier</button>
+              
+             <a href="{% url 'supp_tech' tc.id%}"><button type="button" class="btn btn-danger btn-sm">Supprimer</button></a> </td>
           </tr>
+
           {% endfor %}
 
             
