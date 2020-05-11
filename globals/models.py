@@ -34,7 +34,7 @@ class Client(Persone):
 
 class Technicien(Persone):
     typique = models.BooleanField(default=False)
-    societe = models.CharField(max_length=60)
+    societe = models.CharField(max_length=60,null=True)
     #intervention = models.ForeignKey(Intervention,on_delete=models.CASCADE)
 
 class Fourniseur(Persone):
