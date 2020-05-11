@@ -19,6 +19,10 @@ def supp_tech(request,pk):
     technicien.delete()
     
     return redirect('technicien')
+
+def modifer_tech(request):
+
+     return render(request, 'admins/modifier_tech.html')
     
 def technicien(request):
     technicien = Technicien.objects.all()

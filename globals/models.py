@@ -33,8 +33,13 @@ class Client(Persone):
     matricule_id = models.CharField(max_length=60)
 
 class Technicien(Persone):
+    TYPE = (
+        ('Interne', 'Interne'),
+        ('Externe', 'Externe'),
+    )
     typique = models.BooleanField(default=False)
     societe = models.CharField(max_length=60,null=True)
+    type_tech = models.CharField(max_length=60,choices=TYPE,null=True,default=True)
     #intervention = models.ForeignKey(Intervention,on_delete=models.CASCADE)
 
 class Fourniseur(Persone):
