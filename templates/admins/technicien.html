@@ -1,0 +1,38 @@
+{% extends "../include/base.html" %}
+{%  block content %}
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>nom</th>
+            <th>email</th>
+            <th>tel</th>
+            <th>societe</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          {% for tc in technicien %}
+          <tr>
+            <td>{{tc.nom}}</td>
+            <td>{{tc.email}}</td>
+            <td>{{tc.tel}}</td>
+          
+              {% if tc.typique == "False" %}
+              <td>technicien intern</td>
+              {% else %}
+              <td>{{tc.societe}}</td>
+              {% endif %}
+          </tr>
+          {% endfor %}
+
+            
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{%  endblock content %}

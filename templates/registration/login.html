@@ -6,11 +6,20 @@
           <div class="row w-100">
             <div class="col-lg-4 mx-auto">
               <div class="auto-form-wrapper">
-                <form action="#">
+              {% for msg in messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Erreur : </strong> {{msg}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              {% endfor %}
+                <form method="POST" action="">
+                  {% csrf_token %}
                   <div class="form-group">
                     <label class="label">Username</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="text" class="form-control" placeholder="Username" name="username">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -21,7 +30,7 @@
                   <div class="form-group">
                     <label class="label">Password</label>
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="*********">
+                      <input type="password" class="form-control" placeholder="*********" name="password">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -43,6 +52,7 @@
                     <button class="btn btn-block g-login">
                       <img class="mr-3" src="../../../assets/images/file-icons/icon-google.svg" alt="">Log in with Google</button>
                   </div>
+                  
                   <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Not a member ?</span>
                     <a href="register.html" class="text-black text-small">Create new account</a>
@@ -70,3 +80,6 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
+  </body>
+  </html>

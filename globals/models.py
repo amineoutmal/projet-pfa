@@ -2,13 +2,12 @@ from django.db import models
 
 # Create your models here.
 
-
 class Panne(models.Model):
     libelle_panne = models.CharField(max_length=30)
 
 class Equipement(models.Model):
     nom_equipement=models.CharField(max_length=60)
-    qte_stock=models.IntegerField(max_length=100)
+    qte_stock=models.IntegerField()
     panne=models.ManyToManyField(Panne)
 
 class Intervention(models.Model):
@@ -36,7 +35,7 @@ class Client(Persone):
 class Technicien(Persone):
     typique = models.BooleanField(default=False)
     societe = models.CharField(max_length=60)
-    intervention = models.ForeignKey(Intervention,on_delete=models.CASCADE)
+    #intervention = models.ForeignKey(Intervention,on_delete=models.CASCADE)
 
 class Fourniseur(Persone):
     materiel_demander = models.CharField(max_length=60)
@@ -54,7 +53,9 @@ class Commande(models.Model):
     fourniseur=models.ForeignKey(Fourniseur,on_delete=models.CASCADE)
     equipement=models.ForeignKey(Equipement,on_delete=models.CASCADE)
     prix = models.FloatField()
-    QTE = models.IntegerField()
+    QTE = models.IntegerField(null=True)
+
+
 
 
 
