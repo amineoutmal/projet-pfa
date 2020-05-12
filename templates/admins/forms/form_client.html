@@ -1,0 +1,43 @@
+{% extends "../../include/base.html" %}
+{%  block content %}
+<div class="row d-flex justify-content-center">
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="text-center">Ajouter Client</h4>
+        <p class="card-description"></p>
+        <form class="forms-sample" method="POST" action="">
+            {% csrf_token %}
+            
+            {{form.management_form}}
+            {{form}}
+         <!-- <div class="form-group">
+            <label for="exampleInputName1">Nom & Prénom</label>
+            {{form.nom  }}
+          
+              <hr>
+            <label for="exampleInputName1">Email</label>
+            {{form.email}}
+            <hr>
+            <label for="exampleInputName1">Téléphone</label>
+            {{form.tel  }}
+              <hr>
+              <label for="exampleInputName1">Login</label>
+            {{form.login  }}
+              <hr>
+              <label for="exampleInputName1">Mot de passe</label>
+              {{form.password  }}
+          </div>
+          
+        --> 
+          <hr>
+          <div class="col text-center">
+            <button type="submit" class="btn btn-success mr-2">Enregistrer</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{%  endblock content %}
