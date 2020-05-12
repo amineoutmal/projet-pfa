@@ -20,7 +20,12 @@ def ticket(request):
 #crud technicien
 
 def forms_technicien(request):
-    form = technicienform(request.POST)
+    form = technicienform()
+    if request.method=='POST':
+        form = technicienform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('technicien')
     return render(request, 'admins/forms/form_technicien.html',{'form':form})
 
 

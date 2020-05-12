@@ -15,19 +15,15 @@
           </tr>
         </thead>
         <tbody>
+          {%csrf_token%}
           {% for tc in technicien %}
           <tr>
             <td>{{tc.nom}}</td>
             <td>{{tc.email}}</td>
             <td>{{tc.tel}}</td>
-          
-              {% if tc.typique == "False" %}
-              <td>technicien intern</td>
-              {% else %}
-              <td>{{tc.societe}}</td>
-              {% endif %}
-              
-              
+            <td>{{tc.type_tech}}</td>
+             
+           
               <td><button type="button" class="btn btn-success btn-sm">Modifier</button>
               
              <a href="{% url 'supp_tech' tc.id%}"><button type="button" class="btn btn-danger btn-sm">Supprimer</button></a> </td>

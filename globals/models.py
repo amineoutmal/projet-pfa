@@ -6,7 +6,7 @@ class Panne(models.Model):
 
 class Equipement(models.Model):
     nom_equipement=models.CharField(max_length=60)
-    qte_stock=models.IntegerField(max_length=100)
+    qte_stock=models.IntegerField()
     panne=models.ManyToManyField(Panne)
 
 class Intervention(models.Model):
@@ -35,7 +35,7 @@ class Technicien(Persone):
         ('Interne', 'Interne'),
         ('Externe', 'Externe'),
     )
-    type_tech = models.CharField(choices=TYPE,default=True)
+    type_tech = models.CharField(max_length=100,choices=TYPE)
 
 class Fourniseur(Persone):
     materiel_demander = models.CharField(max_length=60)
