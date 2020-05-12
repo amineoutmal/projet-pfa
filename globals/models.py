@@ -1,13 +1,12 @@
 from django.db import models
-
+ 
 # Create your models here.
-
 class Panne(models.Model):
     libelle_panne = models.CharField(max_length=30)
 
 class Equipement(models.Model):
     nom_equipement=models.CharField(max_length=60)
-    qte_stock=models.IntegerField()
+    qte_stock=models.IntegerField(max_length=100)
     panne=models.ManyToManyField(Panne)
 
 class Intervention(models.Model):
@@ -16,7 +15,6 @@ class Intervention(models.Model):
     etat = models.CharField(max_length=30)
     description = models.TextField(max_length=255)
     equipement = models.ManyToManyField(Equipement)
-
 
 class Persone(models.Model):
     nom = models.CharField(max_length=30)
@@ -37,10 +35,7 @@ class Technicien(Persone):
         ('Interne', 'Interne'),
         ('Externe', 'Externe'),
     )
-    typique = models.BooleanField(default=False)
-    societe = models.CharField(max_length=60,null=True)
-    type_tech = models.CharField(max_length=60,choices=TYPE,null=True,default=True)
-    #intervention = models.ForeignKey(Intervention,on_delete=models.CASCADE)
+    type_tech = models.CharField(choices=TYPE,default=True)
 
 class Fourniseur(Persone):
     materiel_demander = models.CharField(max_length=60)
@@ -58,11 +53,6 @@ class Commande(models.Model):
     fourniseur=models.ForeignKey(Fourniseur,on_delete=models.CASCADE)
     equipement=models.ForeignKey(Equipement,on_delete=models.CASCADE)
     prix = models.FloatField()
-    QTE = models.IntegerField(null=True)
-
-
-
-
-
-
+    QTE = models.IntegerField()
+ 
 
