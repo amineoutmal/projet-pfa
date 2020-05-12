@@ -24,7 +24,7 @@
             <td>{{tc.type_tech}}</td>
              
            
-              <td><button type="button" class="btn btn-success btn-sm">Modifier</button>
+              <td><a href="{% url 'modifier_technicien' tc.id%}"><button type="button" class="btn btn-success btn-sm">Modifier</button></a>
               
              <a href="{% url 'supp_tech' tc.id%}"><button type="button" class="btn btn-danger btn-sm">Supprimer</button></a> </td>
           </tr>

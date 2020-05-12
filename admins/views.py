@@ -19,10 +19,22 @@ def ticket(request):
 
 #crud technicien
 
-def forms_technicien(request):
-    form = technicienform()
-    if request.method=='POST':
-        form = technicienform(request.POST)
+def forms_technicien(request,pk=0):
+    
+    if request.method=='GET':
+        if pk==0:   #check update or insert
+            form = technicienform()
+        else:
+            technicien=Technicien.objects.get(id=pk)
+            form = technicienform(instance=technicien)
+        return render(request, 'admins/forms/form_technicien.html',{'form':form})
+        
+    else: 
+        if pk==0:
+            form = technicienform(request.POST)
+        else:
+            technicien=Technicien.objects.get(id=pk)
+            form = technicienform(request.POST,instance=technicien)
         if form.is_valid():
             form.save()
             return redirect('technicien')

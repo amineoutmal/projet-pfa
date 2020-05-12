@@ -11,7 +11,7 @@ urlpatterns = [
         path('ticket/',views.ticket,name='ticket'),
         path('technicien/',views.technicien,name='technicien'),
         path('form_technicien/',views.forms_technicien,name="ajouter_technicien"),
-        path('<int:id>/',views.forms_technicien,name='modifier_technicien'),
+        path('<int:pk>/',views.forms_technicien,name='modifier_technicien'),
         path('<int:pk>',views.supp_tech,name='supp_tech'),
         
 
