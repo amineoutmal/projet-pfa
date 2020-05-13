@@ -27,6 +27,15 @@ class clientform(ModelForm):
                 'password' : forms.TextInput(attrs={'class':'form-control'}),
                 'matricule_id' : forms.TextInput(attrs={'class':'form-control'}),
         }
+class stockform(ModelForm):
+    class Meta:
+        model = Equipement
+        fields = ('nom_equipement','qte_stock')
+        widgets = {
+                'nom equipement' : forms.TextInput(attrs={'class':'form-control'}),
+                'Qte' : forms.TextInput(attrs={'class':'form-control'}),
+               
+        }
 """class technicienform(forms.Form):
 
         nom = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))

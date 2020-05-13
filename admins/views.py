@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse , redirect
 from django.contrib.auth.decorators import login_required
 from globals.models import *
-from .forms import technicienform , clientform
+from .forms import technicienform , clientform , stockform
 
 def home(request):
     return render(request, 'admins/index.html')
@@ -11,10 +11,14 @@ def intervention(request):
     return render(request, 'admins/intervention.html')
 def stock(request):
     return render(request, 'admins/stock.html')
-def equipement(request):
-    return render(request, 'admins/equipement.html')
+
 def ticket(request):
     return render(request, 'admins/ticket.html')
+
+def technicien(request):
+    
+    return render(request, 'admins/technicien.html')
+
 ###crud client### 
   
 def forms_client(request,pk=0):
@@ -49,6 +53,43 @@ def supp_clt(request,pk):
     client.delete()    
     return redirect('client')
 
+#crud equipement
+
+
+def forms_equipement(request,pk=0):
+    
+    if request.method=='GET':
+        if pk==0:   #check update or insert
+            form = stockform()
+        else:
+            equipement=Equipement.objects.get(id=pk)
+            form = stockform(instance=equipement)
+        return render(request, 'admins/forms/form_stock.html',{'form':form})
+        
+    else: 
+        if pk==0:
+            form = stockform(request.POST)
+        else:
+            equipement=Equipement.objects.get(id=pk)
+            form = stockform(request.POST,instance=equipement)
+        if form.is_valid():
+            form.save()
+            return redirect('stock')
+    return render(request, 'admins/forms/form_stock.html',{'form':form})
+
+
+def supp_equip(request,pk):
+    equipement = Equipement.objects.get(id=pk)
+    equipement.delete()    
+    return redirect('stock')
+
+
+    
+def stock(request):
+    equipement = Equipement.objects.all()
+    context= {'equipement':equipement}
+    return render(request, 'admins/stock.html',context)
+
 #crud technicien
 
 
@@ -81,8 +122,4 @@ def supp_tech(request,pk):
 
 
     
-def technicien(request):
-    technicien = Technicien.objects.all()
-    context= {'technicien':technicien}
-    return render(request, 'admins/technicien.html',context)
 

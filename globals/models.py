@@ -35,7 +35,7 @@ class Technicien(Persone):
         ('Interne', 'Interne'),
         ('Externe', 'Externe'),
     )
-    type_tech = models.CharField(max_length=100,choices=TYPE)
+    types = models.CharField(max_length=100,choices=TYPE)
 
 class Fourniseur(Persone):
     materiel_demander = models.CharField(max_length=60)
