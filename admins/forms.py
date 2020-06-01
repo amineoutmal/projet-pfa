@@ -12,7 +12,7 @@ class technicienform(ModelForm):
                 'email' : forms.TextInput(attrs={'class':'form-control'}),
                 'login' : forms.TextInput(attrs={'class':'form-control'}),
                 'password' : forms.TextInput(attrs={'class':'form-control'}),
-                'type_tech' : forms.TextInput(attrs={'class':'form-control'}),
+                'types' : forms.TextInput(attrs={'class':'form-control'}),
         }
 
 class clientform(ModelForm):
@@ -32,8 +32,8 @@ class stockform(ModelForm):
         model = Equipement
         fields = ('nom_equipement','qte_stock')
         widgets = {
-                'nom equipement' : forms.TextInput(attrs={'class':'form-control'}),
-                'Qte' : forms.TextInput(attrs={'class':'form-control'}),
+                'nom_equipement' : forms.TextInput(attrs={'class':'form-control'}),
+                'qte_stock' : forms.TextInput(attrs={'class':'form-control'}),
                
         }
 """class technicienform(forms.Form):

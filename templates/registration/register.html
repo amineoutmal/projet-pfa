@@ -1,16 +1,27 @@
 {% include "../include/header.html" %}
-
+{% load static %}
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
         <div class="row w-100">
+          
           <div class="col-lg-4 mx-auto">
-            <h2 class="text-center mb-4">Register</h2>
+            <h2 class="text-center mb-4">Inscription</h2>
             <div class="auto-form-wrapper">
-              <form action="#">
+              {% for msg in messages %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Erreur : </strong> {{msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+              <form action="#" method="POST">
+                {% csrf_token %}
+
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Username">
+                    <input type="text" class="form-control" placeholder="Username" name="Username" id="username" required>
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="mdi mdi-check-circle-outline"></i>
@@ -18,9 +29,11 @@
                     </div>
                   </div>
                 </div>
+
+
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="text" class="form-control" placeholder="Nom" name="nom" id="nom" required>
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="mdi mdi-check-circle-outline"></i>
@@ -28,9 +41,10 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="password" class="form-control" placeholder="Confirm Password">
+                    <input type="text" class="form-control" placeholder="Prenom" name="prenom" id="prenom" required>
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="mdi mdi-check-circle-outline"></i>
@@ -38,18 +52,94 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group d-flex justify-content-center">
-                  <div class="form-check form-check-flat mt-0">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" checked> I agree to the terms </label>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Email" name="email" id="email" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
+
+                
+
                 <div class="form-group">
-                  <button class="btn btn-primary submit-btn btn-block">Register</button>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Telephone" name="telephone" id="telephone" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
+                  </div>
                 </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Ville" name="ville" id="ville" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Zip Code" name="zip" id="zip" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Adresse" name="adresse" id="adresse" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="password" class="form-control" placeholder="Mot De Passe" name="password" id="password" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="password" class="form-control" placeholder="Confirmer Mot De Passe" name="secondpassword" id="password2" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                
+                <div class="form-group">
+                  <button class="btn btn-primary submit-btn btn-block">Enregistrer</button>
+                </div>
+
                 <div class="text-block text-center my-3">
-                  <span class="text-small font-weight-semibold">Already have and account ?</span>
-                  <a href="login.html" class="text-black text-small">Login</a>
+                  <span class="text-small font-weight-semibold">Vous Avez Deja Un Compte ?</span>
+                  <a href="{% url 'loginPage' %}" class="text-black text-small">Connecter</a>
                 </div>
               </form>
             </div>
@@ -60,3 +150,5 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <script src="{% static 'src/assets/js/register.js' %}"></script>

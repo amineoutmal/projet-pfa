@@ -101,6 +101,7 @@ def forms_technicien(request,pk=0):
         else:
             technicien=Technicien.objects.get(id=pk)
             form = technicienform(instance=technicien)
+                
         return render(request, 'admins/forms/form_technicien.html',{'form':form})
         
     else: 
