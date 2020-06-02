@@ -12,7 +12,7 @@ class technicienform(ModelForm):
                 'email' : forms.TextInput(attrs={'class':'form-control'}),
                 'login' : forms.TextInput(attrs={'class':'form-control'}),
                 'password' : forms.TextInput(attrs={'class':'form-control'}),
-                'types' : forms.TextInput(attrs={'class':'form-control'}),
+                'types' : forms.Select(attrs={'class':'form-control'}),
         }
 
 class clientform(ModelForm):
@@ -26,6 +26,7 @@ class clientform(ModelForm):
                 'login' : forms.TextInput(attrs={'class':'form-control'}),
                 'password' : forms.TextInput(attrs={'class':'form-control'}),
                 'matricule_id' : forms.TextInput(attrs={'class':'form-control'}),
+                'adresse' : forms.TextInput(attrs={'class':'form-control'}),
         }
 class stockform(ModelForm):
     class Meta:
@@ -36,14 +37,11 @@ class stockform(ModelForm):
                 'qte_stock' : forms.TextInput(attrs={'class':'form-control'}),
                
         }
-"""class technicienform(forms.Form):
-
-        nom = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
-        tel = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
-        email = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
-        login = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
-        password = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))
-        type_tech = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}))"""
-
-
-        
+class panneform(ModelForm):
+        class Meta:
+                model = Panne
+                fields ='__all__'
+                widgets = widgets = {
+                'libelle_panne' : forms.TextInput(attrs={'class':'form-control'}),
+               
+        }

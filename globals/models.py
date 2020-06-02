@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Panne(models.Model):
     libelle_panne = models.CharField(max_length=30)
-    commentaire = models.TextField(max_length=30)
+    
     
 class Equipement(models.Model):
     nom_equipement=models.CharField(max_length=60)
@@ -31,13 +31,13 @@ class Persone(models.Model):
 
 class Client(Persone):
     matricule_id = models.CharField(max_length=200)
-    adresse = models.CharField(max_length=600,default=False)
+    adresse = models.CharField(max_length=600)
 class Technicien(Persone):
     TYPE = (
         ('Interne', 'Interne'),
         ('Externe', 'Externe'),
     )
-    types = models.CharField(max_length=100,choices=TYPE)
+    types = models.CharField(max_length=100,choices=TYPE,default=True)
 
 class Fourniseur(Persone):
     materiel_demander = models.CharField(max_length=60)

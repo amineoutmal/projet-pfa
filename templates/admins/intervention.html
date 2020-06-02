@@ -1,66 +1,129 @@
 {% extends "../include/base.html" %}
 {%  block content %}
 
-
-
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Profile</th>
-            <th>VatNo.</th>
-            <th>Created</th>
-            <th>Status</th>
-           
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Jacob</td>
-            <td>53275531</td>
-            <td>12 May 2017</td>
-            <td>
-              <label class="badge badge-danger">Pending</label>
-            </td>
-          </tr>
-          <tr>
-            <td>Messsy</td>
-            <td>53275532</td>
-            <td>15 May 2017</td>
-            <td>
-              <label class="badge badge-warning">In progress</label>
-            </td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td>53275533</td>
-            <td>14 May 2017</td>
-            <td>
-              <label class="badge badge-info">Fixed</label>
-            </td>
-          </tr>
-          <tr>
-            <td>Peter</td>
-            <td>53275534</td>
-            <td>16 May 2017</td>
-            <td>
-              <label class="badge badge-success">Completed</label>
-            </td>
-          </tr>
-          <tr>
-            <td>Dave</td>
-            <td>53275535</td>
-            <td>20 May 2017</td>
-            <td>
-              <label class="badge badge-warning">In progress</label>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="Tout" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Tout</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Ouverts</a>
+          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Clôturés</a>
+
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="table-responsive table-rows-collapse">
+            <table class="table table-bordered table-condensed table-hover table-rows-collapse">
+              
+                <thead>
+                <tr>
+                                              <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
+                                          <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_priority" scope="col">Priorité&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
+                                          <th class="display_a_on_hover th-client" scope="col">Client&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_date_start" scope="col">Début&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_date_end" scope="col">Fin&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_end&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de fin </span></a></span></th>
+                                        <th class="th-is_fav hidden-print" scope="col">Action</th>
+                      </tr>
+              </thead>
+                <tbody>
+                              <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
+                    <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
+            <td data-label="N°&nbsp;">1</td>
+            <td data-label="Statut&nbsp;"><span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
+            <td data-label="Priorité&nbsp;"><span class="label label-primary" style="font-size:.9em;">Haut</span></td>
+            <td data-label="Titre&nbsp;">ebrbe</td>
+            <td data-label="Client&nbsp;"><a href="client_edit.php?client_id=&amp;readonly=true"></a></td>
+            <td data-label="Début&nbsp;">31/05/2020</td>
+            <td data-label="Fin&nbsp;">31/05/2020</td>
+                    <td class="hidden-print no-js" data-label="Actions"><div class="btn-group btn-group-sm" style="width:70px">
+                <a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Voir les informations"> <span class="glyphicon glyphicon-eye-open"> <span class="sr-only"> Voir les informations </span>
+                </span>
+                </a><a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Éditer les informations"> <span class="glyphicon glyphicon-pencil"> <span class="sr-only">Éditer les informations</span>
+                </span>
+                </a></div></td>
+                  </tr>
+                    </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <div class="table-responsive table-rows-collapse">
+            <table class="table table-bordered table-condensed table-hover table-rows-collapse">
+              
+                <thead>
+                <tr>
+                                              <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
+                                          <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_priority" scope="col">Priorité&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
+                                          <th class="display_a_on_hover th-client" scope="col">Client&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_date_start" scope="col">Début&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_date_end" scope="col">Fin&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_end&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de fin </span></a></span></th>
+                                        <th class="th-is_fav hidden-print" scope="col">Action</th>
+                      </tr>
+              </thead>
+                <tbody>
+                              <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
+                    <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
+            <td data-label="N°&nbsp;">1</td>
+            <td data-label="Statut&nbsp;"><span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
+            <td data-label="Priorité&nbsp;"><span class="label label-primary" style="font-size:.9em;">Haut</span></td>
+            <td data-label="Titre&nbsp;">ebrbe</td>
+            <td data-label="Client&nbsp;"><a href="client_edit.php?client_id=&amp;readonly=true"></a></td>
+            <td data-label="Début&nbsp;">31/05/2020</td>
+            <td data-label="Fin&nbsp;">31/05/2020</td>
+                    <td class="hidden-print no-js" data-label="Actions"><div class="btn-group btn-group-sm" style="width:70px">
+                <a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Voir les informations"> 
+                  
+                  <span class="glyphicon glyphicon-eye-open"> <span class="sr-only">Voir les informations</span>
+                  
+                </span>
+                </a><a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Éditer les informations"> <span class="glyphicon glyphicon-pencil"> <span class="sr-only">Éditer les informations</span>
+                </span>
+                </a></div></td>
+                  </tr>
+                 
+    
+
+            
+
+
+                    </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="table-responsive table-rows-collapse">
+          <table class="table table-bordered table-condensed table-hover table-rows-collapse">
+            
+              <thead>
+              <tr>
+                                            <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
+                                        <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
+                                        <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
+                                        <th class="display_a_on_hover th-iss_priority" scope="col">Priorité&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
+                                        <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
+                                        <th class="display_a_on_hover th-client" scope="col">Client&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                                        <th class="display_a_on_hover th-iss_date_start" scope="col">Début&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
+                                        <th class="display_a_on_hover th-iss_date_end" scope="col">Fin&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=date_end&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de fin </span></a></span></th>
+                                      <th class="th-is_fav hidden-print" scope="col">Action</th>
+                    </tr>
+            </thead>
+              <tbody>
+                  <tr>
+              <td colspan="9">Vide</td>
+            </tr>
+                </tbody>
+          </table>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      </div>
+     
 
 {%  endblock content %}
