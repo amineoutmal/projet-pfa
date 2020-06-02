@@ -15,11 +15,3 @@ $(document).ready(function () {
         document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
     });
 });
-
-$(document).on('change', '#'+searchInput, function () {
-    document.getElementById('latitude_input').value = '';
-    document.getElementById('longitude_input').value = '';
-	
-    document.getElementById('latitude_view').innerHTML = '';
-    document.getElementById('longitude_view').innerHTML = '';
-});

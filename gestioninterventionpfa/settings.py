@@ -25,7 +25,7 @@ SECRET_KEY = 'x-yhub!z=me2m7uo^^67ym9ht)+n4ye(o!bzcmyw@+y@=kv^q7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.102']
 LOGIN_REDIRECT_URL =  'admin/'
 # Application definition
 
