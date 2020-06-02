@@ -1,0 +1,46 @@
+{% extends "../include/base.html" %}
+{%  block content %}
+
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Libelle</th>
+            
+            <th> 
+              <a href="{% url 'ajouter_panne' %}" class="btn btn-primary">
+                  Ajouter Panne
+               
+                  </a>
+          </th>
+            
+           
+          </tr>
+        </thead>
+        <tbody>
+          {%csrf_token%}
+        
+            {% for pan in panne %}
+                      <tr>
+                        <td>{{pan.id}}</td>
+                        <td>{{pan.libelle_panne}}</td>
+                        
+                        <td>
+                          <a href="{% url 'modifier_panne' pan.id %}"><button type="button" class="btn btn-success btn-sm">Modifier</button></a>
+              <a href="{% url 'supp_panne' pan.id %}"><button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                        </td>
+                      </tr>
+            {%endfor%}      
+
+          
+
+            
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{%  endblock content %}

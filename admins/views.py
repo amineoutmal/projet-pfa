@@ -1,10 +1,12 @@
 from django.shortcuts import render,HttpResponse , redirect
 from django.contrib.auth.decorators import login_required
 from globals.models import *
-from .forms import technicienform , clientform , stockform
+from .forms import *
 
 def home(request):
     return render(request, 'admins/index.html')
+def dashboard(request):
+    return render(request, 'admins/dashboard.html')
 def client(request):
     return render(request, 'admins/client.html')
 def intervention(request):
@@ -92,6 +94,10 @@ def stock(request):
 
 #crud technicien
 
+def technicien(request):
+    technicien=Technicien.objects.all()
+    context= {'technicien':technicien}
+    return render(request, 'admins/technicien.html',context)
 
 def forms_technicien(request,pk=0):
     
@@ -121,6 +127,35 @@ def supp_tech(request,pk):
     technicien.delete()    
     return redirect('technicien')
 
-
+#crud panne #
+def panne(request):
+    panne = Panne.objects.all()
+    contexte={'panne':panne}
+    return render(request, 'admins/panne.html',contexte)
+    
+def forms_panne(request,pk=0):
+    
+    if request.method=='GET':
+        if pk==0:   #check update or insert
+            form = panneform()
+        else:
+            panne=Panne.objects.get(id=pk)
+            form = panneform(instance=panne)
+        return render(request, 'admins/forms/form_panne.html',{'form':form})
+        
+    else: 
+        if pk==0:
+            form = panneform(request.POST)
+        else:
+            panne=panneform.objects.get(id=pk)
+            form = panneform(request.POST,instance=panne)
+        if form.is_valid():
+            form.save()
+            return redirect('panne')
+    return render(request, 'admins/forms/form_panne.html',{'form':form})
+def supp_panne(request,pk):
+    panne = Panne.objects.get(id=pk)
+    panne.delete()    
+    return redirect('panne')
     
 

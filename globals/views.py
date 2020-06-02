@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from validate_email import validate_email
+#from validate_email import validate_email#we will fix it
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import redirect
