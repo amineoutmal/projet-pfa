@@ -8,7 +8,7 @@ class Panne(models.Model):
 class Equipement(models.Model):
     nom_equipement=models.CharField(max_length=60)
     qte_stock=models.IntegerField()
-    panne=models.ManyToManyField(Panne)
+    panne=models.ManyToManyField(Panne) #a verifier
 
 class Intervention(models.Model):
     Titre_intervention = models.TextField(max_length=255)
@@ -17,7 +17,7 @@ class Intervention(models.Model):
     etat = models.CharField(max_length=30)
     description = models.TextField(max_length=255)
     image = models.ImageField(blank=True,null=True,upload_to='medial/%Y/%m/%D')
-    equipement = models.ManyToManyField(Equipement)
+    equipements = models.ManyToManyField(Equipement)
 
 class Persone(models.Model):
     nom = models.CharField(max_length=30)

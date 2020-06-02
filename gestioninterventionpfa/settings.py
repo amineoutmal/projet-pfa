@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'admins',
     'globals',
-    'technicien',
     'techniciens',
 ]
 
