@@ -21,16 +21,41 @@
                           <option>{{pn.libelle_panne}}</option>
                          {% endfor %}
                         </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlSelect1">Equipement</label>
-                        <select class="form-control form-control-lg" name="equipement" id="exampleFormControlSelect1">
-                          {% for eq in equipement %}
-                          <option>{{eq.nom_equipement}}</option>
-                         {% endfor %}	
+                      </div><div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table borderless">
+                                <thead>
+                                <tr>
+                                    <td><strong>Equipement</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><button class="pull-right addone btn btn-xs btn-primary">+</button></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                <tr>
+                                    <td class="col-md-4">
+                                        <select class="form-control" id="select-1" name="equipement">
+                                          {% for eq in equipement %}
+                                             <option value="{{eq.id}}">{{eq.nom_equipement}}</option>
+                                             {% endfor %}	                                        
+                                            </select>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                       
+                                    </td>
+                                    <td></td>
+                                    <td class="text-right"><button type="button" class="btn btn-danger btn-sm rm">Supprimer</button></td>
+                                </tr>
 
-                        </select>
-                      </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+         
                       <label for="imagepanne">Image De Panne</label>
 
                       <div class="input-group">
@@ -84,6 +109,18 @@
               </div>
             
 </div>
-
+<script>
+  $(".addone").click(function(e){
+      e.preventDefault();
+      $("tbody tr:last").clone().appendTo("tbody").find("input").val("0");;
+  });
+  $(document).on('click', '.rm', function() {
+      var l = $("tbody tr").length;
+      if(l>1) {
+          $(this).parent().parent().remove();
+      }else{
+          swal("Attention", "Choisir Au Moins Une fourniture");            }
+  });
+</script>
 <script src="{% static 'src/assets/js/maps.js' %}"></script>
 {%  endblock content %}

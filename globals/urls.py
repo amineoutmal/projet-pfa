@@ -7,4 +7,5 @@ urlpatterns = [
         path('validate_email/',csrf_exempt(views.EmailValidationView.as_view()),name='validate_email'),
         path('loginPage/',views.loginPage,name='loginPage'),
         path('registerPage/',views.registerPage,name='registerPage'),
+        
 ]

@@ -1,6 +1,8 @@
 {% extends "../include/baseclient.html" %}
 {%  block content %}
+<style>
 
+</style>
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
@@ -18,8 +20,7 @@
                                           <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
                                           <th class="display_a_on_hover th-iss_priority" scope="col">Equipement&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
                                           <th class="display_a_on_hover th-client" scope="col">Image&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_date_start" scope="col">Début&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_date_end" scope="col">Fin&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_end&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de fin </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_date_start" scope="col">Date Création&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
                                         <th class="th-is_fav hidden-print" scope="col">Action</th>
                       </tr>
               </thead>
@@ -32,10 +33,11 @@
 
             <td data-label="N°&nbsp;">{{interv.id}}</td>
             <td data-label="Statut&nbsp;">
-                <span class="label label-default" style="font-size:.9em;">{{interv.Titre_intervention}}</span>
+            <span class="label label-default" style="font-size:.9em;">{{interv.Titre_intervention}}</span>
 
-                </td>
-            <td data-label="Priorité&nbsp;"><span class="label label-primary" style="font-size:.9em;">
+            </td>
+            <td data-label="Priorité&nbsp;">
+            <span class="label label-primary" style="font-size:.9em;">
             
                     {% if interv.etat == '0' %}
                     <label class="badge badge-warning">Nouveau</label>
@@ -46,52 +48,104 @@
                     {% else %}
                     <label class="badge badge-success">Terminer</label>
                     {% endif %}
-                
-            
             </span></td>
+
             <td data-label="Titre&nbsp;">
-               
-                    <p>{{id_interv}}</p>
-
-            
-    
-
+               {% for equipment in interv.equipements.all %}
+                    {{ equipment.nom_equipement }}
+              </br>
+              {% endfor %}
             </td>
+
             <td data-label="Client&nbsp;">
                 
-                <img id="myImg" src="/media/image.png" alt="Snow" data-toggle="modal" data-target="#exampleModal">
+              <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="" data-caption="" data-image="" data-target="#image-gallery{{interv.id }}">
+                <img class="img-responsive" src="/media/image.png" alt="Trolltunga, Norway" width="100" height="100">
+              </a>
                 
-                
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-        <img id="dd" src="">
 
-      </div>
-      <div class="modal-footer">
-        
-      </div>
-    </div>
-  </div>
-</div>
-            </td>
-            <td data-label="Début&nbsp;">31/05/2020</td>
-            <td data-label="Fin&nbsp;">31/05/2020</td>
+                <div class="modal fade" id="image-gallery{{interv.id }}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+												<h4 class="modal-title" id="image-gallery-title"></h4>
+											</div>
+											<div class="modal-body">
+												<img id="image-gallery-image" style="width:100%;height:100%;"  src="/media/{{interv.image}}">
+											</div>
+											<div class="modal-footer">
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+               
+                
+      </td>
+            <td data-label="Début&nbsp;">{{interv.date_intervention}}</td>
+
                     <td class="hidden-print no-js" data-label="Actions">
+                      {% if interv.etat == '0' %}
                       <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-edit"></i></a>
-                      <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-trash-alt"></i></a>
-                      <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-check"></i></a>
+                      <a class="btn-floating btn-sm btn-secondary" data-toggle="modal" data-target="#modalsuprimer{{interv.id}}"><i class="fas fa-trash-alt"></i></a>
+                      <a class="btn-floating btn-sm btn-secondary" data-toggle="modal" data-target="#modalvalider{{interv.id}}"><i class="fas fa-check"></i></a>
+                      {% elif interv.etat == '1' %}
+                      <p>en attend d'affecter par un technicien</p>
+                      {% elif interv.etat == '2' %}
+                      <p>Affecter</p>
+                      {% else %}
+                      <p>terminer</p>
+                      {% endif %}
+                      
+                     
 
                        
                     </td>
                     </tr>
+
+<!--Modal: modalvalider-->
+<div class="modal fade top" id="modalvalider{{interv.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true" data-backdrop="true">
+<div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+  <!--Content-->
+  <div class="modal-content">
+    <!--Body-->
+    <div class="modal-body">
+      <div class="row d-flex justify-content-center align-items-center">
+
+        <p class="pt-3 pr-2">Vous Voulez Vraiment Valider L'intervention ? </p>
+
+        <a type="button" class="btn btn-success" href="{% url 'validate_interv' interv.id %}">Oui,Valider</a>
+      </div>
+    </div>
+  </div>
+  <!--/.Content-->
+</div>
+</div>
+<!--Modal: modalCookie-->
+
+<!--Modal: modalvalider-->
+<div class="modal fade top" id="modalsuprimer{{interv.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true" data-backdrop="true">
+<div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+  <!--Content-->
+  <div class="modal-content">
+    <!--Body-->
+    <div class="modal-body">
+      <div class="row d-flex justify-content-center align-items-center">
+
+        <p class="pt-3 pr-2">Vous Voulez Vraiment Supprimer L'intervention ? </p>
+
+        <a type="button" class="btn btn-danger" href="{% url 'delete_interv' interv.id %}">Oui,Supprimer</a>
+      </div>
+    </div>
+  </div>
+  <!--/.Content-->
+</div>
+</div>
+<!--Modal: modalCookie-->
 
                     {% endfor %}
                     </tbody>
