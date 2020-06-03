@@ -10,14 +10,8 @@ class Equipement(models.Model):
     qte_stock=models.IntegerField()
     panne=models.ManyToManyField(Panne) #a verifier
 
-class Intervention(models.Model):
-    Titre_intervention = models.TextField(max_length=255)
-    date_intervention = models.DateField(auto_now_add=True)
-    type_panne = models.ForeignKey(Panne,on_delete=models.CASCADE)
-    etat = models.CharField(max_length=30)
-    description = models.TextField(max_length=255)
-    image = models.ImageField(blank=True,null=True,upload_to='medial/%Y/%m/%D')
-    equipements = models.ManyToManyField(Equipement)
+
+
 
 class Persone(models.Model):
     nom = models.CharField(max_length=30)
@@ -44,6 +38,17 @@ class Fourniseur(Persone):
 
 class Admin(Persone):
     privelege = models.CharField(max_length=30)
+
+class Intervention(models.Model):
+    Titre_intervention = models.TextField(max_length=255)
+    date_intervention = models.DateField(auto_now_add=True)
+    type_panne = models.ForeignKey(Panne,on_delete=models.CASCADE)
+    etat = models.CharField(max_length=30)
+    description = models.TextField(max_length=255)
+    image = models.ImageField(blank=True,null=True,upload_to='medial/%Y/%m/%D')
+    equipements = models.ManyToManyField(Equipement)
+    clients = models.ForeignKey(Client,on_delete=models.CASCADE,default=True)
+
 
 class Affectation(models.Model):
     tech=models.ForeignKey(Technicien,on_delete=models.CASCADE)

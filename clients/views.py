@@ -25,10 +25,12 @@ def creer_intervention(request):
         
         idpanne=Panne.objects.filter(libelle_panne=panne).values('id')[0]['id']
         idequip=Equipement.objects.filter(nom_equipement=equipement).values('id')[0]['id']
-
-        insertintervention = Intervention(Titre_intervention=titre,type_panne=Panne.objects.get(id=idpanne),image=imagename,description=description,etat='0')
-        if insertintervention.save():
-            insertintervention.equipements.add(Equipement.objects.get(id=idequip))
+        if 'id_client' in request.session:
+            get_idClient=request.session['id_client']
+        insertintervention = Intervention(Titre_intervention=titre,type_panne=Panne.objects.get(id=idpanne),image=imagename,description=description,etat='0',clients=Client.objects.get(id=get_idClient))
+        insertintervention.save()
+        insertintervention.equipements.add(Equipement.objects.get(id=idequip))
+        
                
 
     return render(request, 'clients/forms/creer-intervention.html',{"panne":list_panne,"equipement":list_equipement})
@@ -36,4 +38,18 @@ def creer_intervention(request):
 
 
 def mes_intervention(request):
-        return render(request, 'clients/mes-intervention.html')
+        if 'id_client' in request.session:
+            get_idClient=request.session['id_client']
+            Interv_client = Intervention.objects.all().filter(clients=get_idClient)
+            inte_id = Interv_client.values_list('id')
+            
+            alls = Intervention.equipements.through.objects.all()
+            print(alls.get())
+            context = {
+                'intervention':Interv_client
+                }
+
+            return render(request, 'clients/mes-intervention.html',context)
+            
+    
+        
