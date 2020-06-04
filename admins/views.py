@@ -22,7 +22,9 @@ def intervention(request):
                     get_interv = Intervention.objects.get(id=intervention_id)
                     get_interv.etat = 1
                     if get_interv.save():
-                        sweetify.success(self.request, 'You successfully changed your password')
+                        get_Technicien = Technicien.objects.get(id=technicien_id)
+                        get_Technicien.disponibilité = 1
+                        get_Technicien.save()
 
 
                 All_interv = Intervention.objects.all()
