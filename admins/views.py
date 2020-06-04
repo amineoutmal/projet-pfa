@@ -2,6 +2,8 @@ from django.shortcuts import render,HttpResponse , redirect
 from django.contrib.auth.decorators import login_required
 from globals.models import *
 from .forms import *
+import tkinter
+import sweetify
 
 def home(request):
     return render(request, 'admins/index.html')
@@ -9,8 +11,36 @@ def dashboard(request):
     return render(request, 'admins/dashboard.html')
 def client(request):
     return render(request, 'admins/client.html')
+
+#intervention-operation
+
 def intervention(request):
-    return render(request, 'admins/intervention.html')
+                if request.method == 'POST':
+                    technicien_id = request.POST.get('technicienaffecter')
+                    intervention_id = request.POST.get('intervconcerner')
+                    affecter = Affectation(tech=Technicien.objects.get(id=technicien_id),Inter=Intervention.objects.get(id=intervention_id)).save()
+                    get_interv = Intervention.objects.get(id=intervention_id)
+                    get_interv.etat = 1
+                    if get_interv.save():
+                        sweetify.success(self.request, 'You successfully changed your password')
+
+
+                All_interv = Intervention.objects.all()
+                Tech_list = Technicien.objects.filter(disponibilité="0").all()
+                context = {
+                    'All_intervention':All_interv,
+                    'Tech_list':Tech_list
+                    }      
+                return render(request, 'admins/intervention.html',context)
+
+def delete_interv_admin(request,pk):
+            get_interv = Intervention.objects.get(id=pk)
+            get_interv.delete()
+       
+            return redirect('intervention')
+            
+
+
 def stock(request):
     return render(request, 'admins/stock.html')
 

@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL =  'admin/'
 # Application definition
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'admins',
     'globals',
     'techniciens',
+    'sweetify',
 ]
 
 MIDDLEWARE = [

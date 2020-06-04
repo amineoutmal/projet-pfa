@@ -32,7 +32,9 @@ class Technicien(Persone):
         ('Externe', 'Externe'),
     )
     types = models.CharField(max_length=100,choices=TYPE,default=True)
-
+    specialité = models.ForeignKey(Panne,on_delete=models.CASCADE,default=True)
+    disponibilité = models.CharField(max_length=100,default=True)
+    
 class Fourniseur(Persone):
     materiel_demander = models.CharField(max_length=60)
 
@@ -54,7 +56,7 @@ class Affectation(models.Model):
     tech=models.ForeignKey(Technicien,on_delete=models.CASCADE)
     Inter=models.ForeignKey(Intervention,on_delete=models.CASCADE)
     date_affectation = models.DateField(auto_now_add=True)
-    date_resolution = models.DateField()
+    date_resolution = models.DateField(null=True)
 
 class Commande(models.Model):
     fourniseur=models.ForeignKey(Fourniseur,on_delete=models.CASCADE)

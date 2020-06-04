@@ -12,6 +12,9 @@
 
         </div>
       </nav>
+
+      <!--Tout -->
+
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <div class="table-responsive table-rows-collapse">
@@ -19,105 +22,308 @@
               
                 <thead>
                 <tr>
-                                              <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
-                                          <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_priority" scope="col">Priorité&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
-                                          <th class="display_a_on_hover th-client" scope="col">Client&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_date_start" scope="col">Début&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_date_end" scope="col">Fin&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_end&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de fin </span></a></span></th>
-                                        <th class="th-is_fav hidden-print" scope="col">Action</th>
+                  <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
+                  <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">Panne&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_priority" scope="col">Equipement&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">Image&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">éffectué&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_date_start" scope="col">Planifié&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
+                <th class="th-is_fav hidden-print" scope="col">Action</th>
                       </tr>
               </thead>
                 <tbody>
-                              <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
-                    <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
-            <td data-label="N°&nbsp;">1</td>
-            <td data-label="Statut&nbsp;"><span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
-            <td data-label="Priorité&nbsp;"><span class="label label-primary" style="font-size:.9em;">Haut</span></td>
-            <td data-label="Titre&nbsp;">ebrbe</td>
-            <td data-label="Client&nbsp;"><a href="client_edit.php?client_id=&amp;readonly=true"></a></td>
-            <td data-label="Début&nbsp;">31/05/2020</td>
-            <td data-label="Fin&nbsp;">31/05/2020</td>
-                    <td class="hidden-print no-js" data-label="Actions"><div class="btn-group btn-group-sm" style="width:70px">
-                <a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Voir les informations"> <span class="glyphicon glyphicon-eye-open"> <span class="sr-only"> Voir les informations </span>
-                </span>
-                </a><a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Éditer les informations"> <span class="glyphicon glyphicon-pencil"> <span class="sr-only">Éditer les informations</span>
-                </span>
-                </a></div></td>
+           {%csrf_token%}
+           {% for interv in All_intervention %}
+              
+            <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
+            <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
+            <td data-label="N°&nbsp;">{{interv.id}}</td>
+            <td data-label="Titre&nbsp;">{{interv.Titre_intervention}}<span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
+            <td data-label="Statut&nbsp;">
+              <span class="label label-primary" style="font-size:.9em;">
+            
+                {% if interv.etat == '0' %}
+                <label class="badge badge-warning">Nouveau</label>
+                {% elif interv.etat == '1' %}
+                <label class="badge badge-info">Affecter</label>
+                
+                {% else %}
+                <label class="badge badge-success">Terminer</label>
+
+                {% endif %}
+              </span>   
+            </td>
+            <td data-label="Panne&nbsp;">{{interv.type_panne.libelle_panne}}</td>
+
+            <td data-label="Equipement&nbsp;">
+              {% for equipment in interv.equipements.all %}
+                          {{ equipment.nom_equipement }} 
+                  </br>
+              
+              {% endfor %}
+            </td>
+            <td data-label="Image&nbsp;">
+              <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="" data-caption="" data-image="" data-target="#image-gallery{{interv.id }}">
+                <img class="img-responsive" src="/media/image.png" alt="Trolltunga, Norway" width="100" height="100">
+              </a>
+                
+
+                <div class="modal fade" id="image-gallery{{interv.id }}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+												<h4 class="modal-title" id="image-gallery-title"></h4>
+											</div>
+											<div class="modal-body">
+												<img id="image-gallery-image" style="width:100%;height:100%;"  src="/media/{{interv.image}}">
+											</div>
+											<div class="modal-footer">
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+               
+
+            </td>
+
+            <td data-label="éffectué&nbsp;">
+              
+
+            </td>
+            <td data-label="Planifié&nbsp;">Planifié</td>
+            <td class="hidden-print no-js" data-label="Actions">
+              {% if interv.etat == '0' %}
+              <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-bullseye"></i></a>
+              <a class="btn-floating btn-sm btn-secondary" ><i class="fas fa-trash-alt"></i></a>
+              <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#affecteretch{{interv.id}}">Affecter</button>
+              {% elif interv.etat == '1' %}
+              <button type="button" class="btn btn-primary btn-rounded">Tracker</button>
+
+              {% else %}
+              <button type="button" class="btn btn-primary btn-rounded">Facturation</button>
+              {% endif %}
+              
+
+            </td>
                   </tr>
+                  <!--Modal: modalvalider-->
+<div class="modal fade top" id="affecteretch{{interv.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true" data-backdrop="true">
+<div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
+  <!--Content-->
+  <div class="modal-content">
+    <!--Body-->
+    <div class="modal-body">
+      <div class="row d-flex justify-content-center align-items-center">
+        <form class="forms-sample" method="POST" action="#">
+          {% csrf_token %}
+        <p class="pt-3 pr-2">Liste Des {{interv.type_panne.libelle_panne}} Disponible :</p></br>
+        <select class="browser-default custom-select custom-select-lg mb-6" id="select-1" name="technicienaffecter">
+           {% for tech in Tech_list %}
+            {% if tech.specialité.libelle_panne == interv.type_panne.libelle_panne %}
+                <option value="{{tech.id}}">{{tech.nom}}</option>
+
+            {% endif %}
+            {% endfor %}
+        </select>
+        <input id="intervconcerner" name="intervconcerner" type="hidden" value="{{interv.id}}">
+
+        <div class="form-group">
+
+        <button class="btn btn-primary" type="submit">Affecter</button>
+      
+      </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+  <!--/.Content-->
+</div>
+</div>
+
+
+              {% endfor %}
                     </tbody>
             </table>
             </div>
         </div>
+
+
+
+      <!--Ouvert-->
+
+
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
           <div class="table-responsive table-rows-collapse">
             <table class="table table-bordered table-condensed table-hover table-rows-collapse">
               
                 <thead>
                 <tr>
-                                              <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
-                                          <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_priority" scope="col">Priorité&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
-                                          <th class="display_a_on_hover th-client" scope="col">Client&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_date_start" scope="col">Début&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
-                                          <th class="display_a_on_hover th-iss_date_end" scope="col">Fin&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_end&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de fin </span></a></span></th>
-                                        <th class="th-is_fav hidden-print" scope="col">Action</th>
+                  <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
+                  <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">Panne&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_priority" scope="col">Equipement&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">Image&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">éffectué&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_date_start" scope="col">Planifié&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
+                  <th class="th-is_fav hidden-print" scope="col">Action</th>
                       </tr>
               </thead>
                 <tbody>
-                              <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
-                    <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
-            <td data-label="N°&nbsp;">1</td>
-            <td data-label="Statut&nbsp;"><span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
-            <td data-label="Priorité&nbsp;"><span class="label label-primary" style="font-size:.9em;">Haut</span></td>
-            <td data-label="Titre&nbsp;">ebrbe</td>
-            <td data-label="Client&nbsp;"><a href="client_edit.php?client_id=&amp;readonly=true"></a></td>
-            <td data-label="Début&nbsp;">31/05/2020</td>
-            <td data-label="Fin&nbsp;">31/05/2020</td>
-                    <td class="hidden-print no-js" data-label="Actions"><div class="btn-group btn-group-sm" style="width:70px">
-                <a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Voir les informations"> 
-                  
-                  <span class="glyphicon glyphicon-eye-open"> <span class="sr-only">Voir les informations</span>
-                  
-                </span>
-                </a><a class="btn btn-default" href="#" data-toggle="tooltip" data-original-title="Éditer les informations"> <span class="glyphicon glyphicon-pencil"> <span class="sr-only">Éditer les informations</span>
-                </span>
-                </a></div></td>
+                  {% for interv in All_intervention %}
+                          {% if interv.etat == '0'  %}
+                          <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
+                            <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
+                            <td data-label="N°&nbsp;">{{interv.id}}</td>
+                            <td data-label="Titre&nbsp;">{{interv.Titre_intervention}}<span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
+                            <td data-label="Statut&nbsp;">
+                              <span class="label label-primary" style="font-size:.9em;">
+                                <label class="badge badge-warning">Nouveau</label>
+                              
+                              </span>   
+                            </td>
+                            <td data-label="Panne&nbsp;">{{interv.type_panne.libelle_panne}}</td>
+
+                            <td data-label="Equipement&nbsp;">
+                              {% for equipment in interv.equipements.all %}
+                                    {{ equipment.nom_equipement }}
+                              </br>
+                              {% endfor %}
+                            </td>
+                            <td data-label="Image&nbsp;">
+                              <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="" data-caption="" data-image="" data-target="#interv-ouvert{{interv.id }}">
+                                <img class="img-responsive" src="/media/image.png" alt="Trolltunga, Norway" width="100" height="100">
+                              </a>
+                                
+                
+                                <div class="modal fade" id="interv-ouvert{{interv.id}}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title" id="interv-ouvert-title"></h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <img id="interv-ouvert-image" style="width:100%;height:100%;"  src="/media/{{interv.image}}">
+                                      </div>
+                                      <div class="modal-footer">
+                
+                
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                               
+                
+                            </td>
+                            <td data-label="éffectué&nbsp;">
+                              
+                
+                            </td>
+                            <td data-label="Planifié&nbsp;">Planifié</td>
+                            <td class="hidden-print no-js" data-label="Actions">
+                              <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-bullseye"></i></a>
+                              <a class="btn-floating btn-sm btn-secondary" data-toggle="modal" data-target=""><i class="fas fa-trash-alt"></i></a>
+                              <button type="button" class="btn btn-primary btn-rounded">Affecter</button>
+                            </td>
+                                  </tr>
                   </tr>
-                 
-    
-
-            
-
+                 {% endif %} 
+                  {% endfor %}
 
                     </tbody>
             </table>
             </div>
         </div>
+
+
+
+      <!--Cloturé-->
+
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="table-responsive table-rows-collapse">
           <table class="table table-bordered table-condensed table-hover table-rows-collapse">
             
               <thead>
               <tr>
-                                            <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
-                                        <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
-                                        <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
-                                        <th class="display_a_on_hover th-iss_priority" scope="col">Priorité&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
-                                        <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
-                                        <th class="display_a_on_hover th-client" scope="col">Client&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
-                                        <th class="display_a_on_hover th-iss_date_start" scope="col">Début&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
-                                        <th class="display_a_on_hover th-iss_date_end" scope="col">Fin&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?f_type=closed&amp;page_nbr=1&amp;order_by=date_end&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de fin </span></a></span></th>
-                                      <th class="th-is_fav hidden-print" scope="col">Action</th>
+                <th class="display_a_on_hover th-selection" scope="col"><label for="selection_all"><input type="checkbox" id="selection_all" name="selection_all" value=""></label></th>
+                  <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_nom" scope="col">Titre&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_priority" scope="col">Equipement&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">Image&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-client" scope="col">éffectué&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
+                  <th class="display_a_on_hover th-iss_date_start" scope="col">Planifié&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
+                  <th class="th-is_fav hidden-print" scope="col">Action</th>
                     </tr>
             </thead>
               <tbody>
-                  <tr>
-              <td colspan="9">Vide</td>
-            </tr>
+                {% for interv in All_intervention %}
+                {% if interv.etat == '3'  %}
+                <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
+                  <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
+                  <td data-label="N°&nbsp;">{{interv.id}}</td>
+                  <td data-label="Titre&nbsp;">{{interv.Titre_intervention}}<span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
+                  <td data-label="Statut&nbsp;">
+                    <span class="label label-primary" style="font-size:.9em;">
+                      <label class="badge badge-success">Terminer</label>
+                    
+                    </span>   
+                  </td>
+                  <td data-label="Equipement&nbsp;">
+                    {% for equipment in interv.equipements.all %}
+                          {{ equipment.nom_equipement }}
+                    </br>
+                    {% endfor %}
+                  </td>
+                  <td data-label="Image&nbsp;">
+                    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="" data-caption="" data-image="" data-target="#interv-ouvert{{interv.id }}">
+                      <img class="img-responsive" src="/media/image.png" alt="Trolltunga, Norway" width="100" height="100">
+                    </a>
+                      
+      
+                      <div class="modal fade" id="interv-cloturé{{interv.id}}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                              <h4 class="modal-title" id="interv-ouvert-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                              <img id="interv-ouvert-image" style="width:100%;height:100%;"  src="/media/{{interv.image}}">
+                            </div>
+                            <div class="modal-footer">
+      
+      
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                     
+      
+                  </td>
+                  <td data-label="éffectué&nbsp;">
+                    
+      
+                  </td>
+                  <td data-label="Planifié&nbsp;">Planifié</td>
+                  <td class="hidden-print no-js" data-label="Actions">
+                    <button type="button" class="btn btn-primary btn-rounded">Voir Fiche</button>
+
+                  </td>
+                        </tr>
+        </tr>
+       {% endif %} 
+        {% endfor %}
+
                 </tbody>
           </table>
           </div>

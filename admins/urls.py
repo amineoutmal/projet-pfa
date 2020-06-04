@@ -25,6 +25,10 @@ urlpatterns = [
         path('client/<int:pk>',views.supp_clt,name='supp_clt'),
         path('client/',views.client,name='client'),
         path('form_client/',views.forms_client,name='ajouter_client'),
+
+        path('delete_interv_admin/<int:pk>',views.delete_interv_admin,name='delete_interv_admin'),
+
+        
        
 
 ]

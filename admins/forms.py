@@ -5,6 +5,7 @@ from globals.models import *
 class technicienform(ModelForm):
     class Meta:
         model = Technicien
+        exclude = ['disponibilité']
         fields = '__all__'
         widgets = {
                 'nom' : forms.TextInput(attrs={'class':'form-control'}),
@@ -13,6 +14,7 @@ class technicienform(ModelForm):
                 'login' : forms.TextInput(attrs={'class':'form-control'}),
                 'password' : forms.TextInput(attrs={'class':'form-control'}),
                 'types' : forms.Select(attrs={'class':'form-control'}),
+                'specialité': forms.Select(attrs={'class':'form-control','readonly': 'readonly'}),
         }
 
 class clientform(ModelForm):
