@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,14 +41,19 @@
         <!-- endinject -->
         <!-- Custom js for this page-->
         <script src="{%  static 'src/assets/js/demo_1/dashboard.js'%}"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeN54IfCO6A6D2OVe6AY23as0T5h0Nk8M&libraries=places&callback=initMap"
-        async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 
+      
         <!-- End custom js for this page-->
         
-      
+      <style>
+        #map {
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+ }
+      </style>
   </head>
   <body>
 

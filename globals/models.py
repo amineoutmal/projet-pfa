@@ -1,4 +1,6 @@
+from __future__ import unicode_literals
 from django.db import models
+from django.contrib.gis.db import models
  
 # Create your models here.
 class Panne(models.Model):
@@ -9,9 +11,6 @@ class Equipement(models.Model):
     nom_equipement=models.CharField(max_length=60)
     qte_stock=models.IntegerField()
     panne=models.ManyToManyField(Panne) #a verifier
-
-
-
 
 class Persone(models.Model):
     nom = models.CharField(max_length=30)
@@ -50,6 +49,10 @@ class Intervention(models.Model):
     image = models.ImageField(blank=True,null=True,upload_to='medial/%Y/%m/%D')
     equipements = models.ManyToManyField(Equipement)
     clients = models.ForeignKey(Client,on_delete=models.CASCADE,default=True)
+    latitude = models.FloatField(default=True)
+    longtude = models.FloatField(default=True)
+    fulladresses = models.TextField(max_length=500,default=True)
+
 
 
 class Affectation(models.Model):

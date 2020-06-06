@@ -18,6 +18,9 @@ def creer_intervention(request):
         equipementss= request.POST.getlist('equipement')
         image= request.FILES['image']
         description= request.POST.get('description')
+        longitudes= request.POST.get('loc_long')
+        latitudes= request.POST.get('loc_lat')
+        fulladresse= request.POST.get('search_input')
         
 
         imagename = titre+image.name
@@ -28,7 +31,7 @@ def creer_intervention(request):
         #idequip=Equipement.objects.filter(nom_equipement=equipement).values('id')[0]['id']
         if 'id_client' in request.session:
             get_idClient=request.session['id_client']
-        insertintervention = Intervention(Titre_intervention=titre,type_panne=Panne.objects.get(id=idpanne),image=imagename,description=description,etat='0',clients=Client.objects.get(id=get_idClient))
+        insertintervention = Intervention(Titre_intervention=titre,type_panne=Panne.objects.get(id=idpanne),image=imagename,description=description,etat='0',clients=Client.objects.get(id=get_idClient),latitude=latitudes,longtude=longitudes,fulladresses=fulladresse)
         insertintervention.save()
         for eq in equipementss:
             insertintervention.equipements.add(Equipement.objects.get(id=eq))

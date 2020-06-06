@@ -5,8 +5,10 @@ $(document).ready(function () {
     autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
         types: ['geocode'],
     });
-	
-    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    
+
+    
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
         var near_place = autocomplete.getPlace();
         document.getElementById('loc_lat').value = near_place.geometry.location.lat();
         document.getElementById('loc_long').value = near_place.geometry.location.lng();
@@ -15,3 +17,4 @@ $(document).ready(function () {
         document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
     });
 });
+
