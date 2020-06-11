@@ -41,6 +41,7 @@ def checkadmin(login,password):
         return 'false'
 
 def loginPage(request):
+    
     if request.method=='POST':
         logins= request.POST.get('username')
         passwords= request.POST.get('password')
@@ -48,10 +49,11 @@ def loginPage(request):
             request.session['id_client']= Client.objects.filter(login=logins).values('id')[0]['id']
             return redirect('acceuil')
         elif checktechnicien(logins,passwords)=="true":
-            request.sessions['technicien_id'] = Technicien.objects.filter(login=logins).values('id')[0]['id']
-            return HttpResponse(id)
+            request.session['technicien_id'] = Technicien.objects.filter(login=logins).values('id')[0]['id']
+            return redirect('acceuil-technicien')
         elif checkadmin(logins,passwords)=="true":
-            return redirect('home')
+            request.session['admin_id'] = Admin.objects.filter(login=logins).values('id')[0]['id']
+            return redirect('dashboard')
         else :
             messages.info(request,'Mot De Passe Ou User Incorrect')
 

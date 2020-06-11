@@ -8,5 +8,6 @@ urlpatterns = [
         path('mes-intervention/',views.mes_intervention,name='mes-intervention'),
         path('validate_interv/<int:pk>',views.validate_interv,name='validate_interv'),
         path('delete_interv/<int:pk>',views.delete_interv,name='delete_interv'),
+        path('logout_client',views.logout_client,name='logout_client'),
 
 ]

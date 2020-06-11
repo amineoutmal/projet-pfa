@@ -29,7 +29,6 @@
                   <th class="display_a_on_hover th-client" scope="col">Panne&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
                   <th class="display_a_on_hover th-iss_priority" scope="col">Equipement&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
                   <th class="display_a_on_hover th-client" scope="col">Image&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
-                  <th class="display_a_on_hover th-client" scope="col">éffectué&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
                   <th class="display_a_on_hover th-iss_date_start" scope="col">Planifié&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
                 <th class="th-is_fav hidden-print" scope="col">Action</th>
                       </tr>
@@ -48,8 +47,10 @@
                 {% if interv.etat == '0' %}
                 <label class="badge badge-warning">Nouveau</label>
                 {% elif interv.etat == '1' %}
+                <label class="badge badge-warning">Nouveau</label>
+                {% elif interv.etat == '2' %}
                 <label class="badge badge-info">Affecter</label>
-                
+
                 {% else %}
                 <label class="badge badge-success">Terminer</label>
 
@@ -92,20 +93,30 @@
 
             </td>
 
-            <td data-label="éffectué&nbsp;">
-              
+            
+              <td data-label="Planifié&nbsp;">
 
-            </td>
-            <td data-label="Planifié&nbsp;">Planifié</td>
+                <p>Début : {{interv.date_intervention}}</p>
+                {% if interv.etat == '0' or interv.etat == '1' or interv.etat == '2'%}
+                
+                <p>Fin : non Défini</p>
+                <p>Durée : non Défini</p>
+                {% elif interv.etat == '3' %}
+                <p>Fin : {{interv.date_fin}}</p>
+                <p>Durée : {{interv.durée_mission}} Heurs</p>
+
+                {% endif %}
+  
+                </td>
+              
             <td class="hidden-print no-js" data-label="Actions">
-              {% if interv.etat == '0' %}
-              <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-bullseye"></i></a>
+              {% if interv.etat == '0' or interv.etat == '1'%}
               <a class="btn-floating btn-sm btn-secondary" ><i class="fas fa-trash-alt"></i></a>
               <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#affecteretch{{interv.id}}">Affecter</button>
-              {% elif interv.etat == '1' %}
-              <button type="button" class="btn btn-primary btn-rounded">Tracker</button>
+              {% elif interv.etat == '2' %}
+              <a href="{% url 'track_interv' interv.id %}"><button type="button" class="btn btn-primary btn-rounded">Localiser</button></a>
 
-              {% else %}
+              {% elif interv.etat == '3' %}
               <button type="button" class="btn btn-primary btn-rounded">Facturation</button>
               {% endif %}
               
@@ -173,14 +184,13 @@ aria-hidden="true" data-backdrop="true">
                   <th class="display_a_on_hover th-client" scope="col">Panne&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
                   <th class="display_a_on_hover th-iss_priority" scope="col">Equipement&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
                   <th class="display_a_on_hover th-client" scope="col">Image&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
-                  <th class="display_a_on_hover th-client" scope="col">éffectué&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
                   <th class="display_a_on_hover th-iss_date_start" scope="col">Planifié&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
                   <th class="th-is_fav hidden-print" scope="col">Action</th>
                       </tr>
               </thead>
                 <tbody>
                   {% for interv in All_intervention %}
-                          {% if interv.etat == '0'  %}
+                          {% if interv.etat == '0'  or interv.etat == '1'%}
                           <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
                             <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
                             <td data-label="N°&nbsp;">{{interv.id}}</td>
@@ -225,12 +235,22 @@ aria-hidden="true" data-backdrop="true">
                                
                 
                             </td>
-                            <td data-label="éffectué&nbsp;">
+
+                            <td data-label="Planifié&nbsp;">
+
+                              <p>Début : {{interv.date_intervention}}</p>
+                              {% if interv.etat == '0' or interv.etat == '1' or interv.etat == '2'%}
                               
+                              <p>Fin : non Défini</p>
+                              <p>Durée : non Défini</p>
+                              {% elif interv.etat == '3' %}
+                              <p>Fin : {{interv.date_fin}}</p>
+                              <p>Durée : {{interv.durée_mission}} Heurs</p>
+              
+                              {% endif %}
                 
-                            </td>
-                            <td data-label="Planifié&nbsp;">Planifié</td>
-                            <td class="hidden-print no-js" data-label="Actions">
+                              </td>                           
+                              <td class="hidden-print no-js" data-label="Actions">
                               <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-bullseye"></i></a>
                               <a class="btn-floating btn-sm btn-secondary" data-toggle="modal" data-target=""><i class="fas fa-trash-alt"></i></a>
                               <button type="button" class="btn btn-primary btn-rounded">Affecter</button>
@@ -260,14 +280,13 @@ aria-hidden="true" data-backdrop="true">
                   <th class="display_a_on_hover th-iss_status" scope="col">Statut&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
                   <th class="display_a_on_hover th-iss_priority" scope="col">Equipement&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=priority&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Priorité </span></a></span></th>
                   <th class="display_a_on_hover th-client" scope="col">Image&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
-                  <th class="display_a_on_hover th-client" scope="col">éffectué&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=client&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Client </span></a></span></th>
                   <th class="display_a_on_hover th-iss_date_start" scope="col">Planifié&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=date_start&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Date de début </span></a></span></th>
                   <th class="th-is_fav hidden-print" scope="col">Action</th>
                     </tr>
             </thead>
               <tbody>
                 {% for interv in All_intervention %}
-                {% if interv.etat == '3'  %}
+                {% if interv.etat == '4'  %}
                 <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
                   <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
                   <td data-label="N°&nbsp;">{{interv.id}}</td>
@@ -310,12 +329,21 @@ aria-hidden="true" data-backdrop="true">
                      
       
                   </td>
-                  <td data-label="éffectué&nbsp;">
+                
+                  <td data-label="Planifié&nbsp;">
+
+                    <p>Début : {{interv.date_intervention}}</p>
+                    {% if interv.etat == '0' or interv.etat == '1' or interv.etat == '2'%}
                     
+                    <p>Fin : non Défini</p>
+                    <p>Durée : non Défini</p>
+                    {% elif interv.etat == '4' %}
+                    <p>Fin : {{interv.date_fin}}</p>
+                    <p>Durée : {{interv.durée_mission}} Heurs</p>
+    
+                    {% endif %}
       
-                  </td>
-                  <td data-label="Planifié&nbsp;">Planifié</td>
-                  <td class="hidden-print no-js" data-label="Actions">
+                    </td>                  <td class="hidden-print no-js" data-label="Actions">
                     <button type="button" class="btn btn-primary btn-rounded">Voir Fiche</button>
 
                   </td>

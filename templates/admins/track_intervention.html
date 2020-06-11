@@ -1,0 +1,60 @@
+{% extends "../include/base.html" %}
+{% load static %}
+{%  block content %}
+
+<input type="text" value="{{inter.latitude}}" name="latitude" id="latitude" hidden >
+<input type="text" value="{{inter.longtude}}" name="longtude" id="longtude" hidden>
+<input type="text" value="{{inter.fulladresses}}" name="adresse" id="adresse" hidden>
+
+
+<div id="map" style="height: 100%;width: 100%;"></div>
+
+    <script>
+
+      function initMap() {
+        var latitude = parseFloat(document.getElementById("latitude").value);
+        var longtude = parseFloat(document.getElementById("longtude").value);
+        var fulladresse = document.getElementById("adresse").value;
+        
+        var myLatLng = {lat: latitude, lng: longtude};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h2 id="firstHeading" class="firstHeading">'+fulladresse+'</h2>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+
+        var icon = {
+    url: "/media/markergif.gif", // url
+    scaledSize: new google.maps.Size(50, 50), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
+        
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          icon: icon,
+          optimized: false,
+          title: 'Hello World!'
+          
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAegDbIoBUtOkrawryONGwpQ4gixK9XKjY&callback=initMap">
+    </script>
+{%  endblock content %}

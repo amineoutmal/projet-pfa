@@ -3,12 +3,17 @@ from globals.models import *
 from django.core.files.storage import *
 from django.contrib import messages
 from django.shortcuts import redirect
+from .decorators import unauthenticated_client
 
 
 # Create your views here.
+def logout_client(request):
+    del request.session['id_client']
+    return redirect('loginPage')
+@unauthenticated_client
 def home(request):
     return render(request, 'clients/index.html')
-
+@unauthenticated_client
 def creer_intervention(request):
     list_panne = Panne.objects.all()
     list_equipement = Equipement.objects.all()  
@@ -47,9 +52,8 @@ def creer_intervention(request):
     return render(request, 'clients/forms/creer-intervention.html',{"panne":list_panne,"equipement":list_equipement})
 
 
-
+@unauthenticated_client
 def mes_intervention(request):
-        if 'id_client' in request.session:
             get_idClient=request.session['id_client']
             Interv_client = Intervention.objects.all().filter(clients=get_idClient)
 
@@ -60,7 +64,7 @@ def mes_intervention(request):
             return render(request, 'clients/mes-intervention.html',context)
             
     
-        
+@unauthenticated_client        
 def validate_interv(request,pk):
 
             get_interv = Intervention.objects.get(id=pk)
@@ -68,7 +72,7 @@ def validate_interv(request,pk):
             get_interv.save()
        
             return redirect('mes-intervention')
-
+@unauthenticated_client
 def delete_interv(request,pk):
 
             get_interv = Intervention.objects.get(id=pk)

@@ -32,7 +32,7 @@ class Technicien(Persone):
     )
     types = models.CharField(max_length=100,choices=TYPE,default=True)
     specialité = models.ForeignKey(Panne,on_delete=models.CASCADE,default=True)
-    disponibilité = models.CharField(max_length=100,default=True)
+    disponibilité = models.CharField(max_length=100,default=0)
     
 class Fourniseur(Persone):
     materiel_demander = models.CharField(max_length=60)
@@ -52,7 +52,8 @@ class Intervention(models.Model):
     latitude = models.FloatField(default=True)
     longtude = models.FloatField(default=True)
     fulladresses = models.TextField(max_length=500,default=True)
-
+    date_fin = models.TextField(max_length=255,default=False)
+    durée_mission = models.TextField(max_length=255,default=False)
 
 
 class Affectation(models.Model):

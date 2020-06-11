@@ -13,7 +13,8 @@
             <th>Nom</th>
             <th>Email</th>
             <th>Tel</th>
-            <th>Societe</th>
+            <th>Specialité</th>
+            <th>Disponibilité</th>
             <th> 
               <a href="{% url 'ajouter_technicien' %}" class="btn btn-primary">
                   Ajouter Technicien
@@ -31,7 +32,12 @@
             <td>{{tc.nom}}</td>
             <td>{{tc.email}}</td>
             <td>{{tc.tel}}</td>
-            <td>{{tc.type_tech}}</td>
+            <td>{{tc.specialité.libelle_panne}}</td>
+            {% if tc.disponibilité == '0' %}
+            <td><label class="badge badge-success" style="color: aliceblue;" >Disponible</label></td>
+            {% else %}
+            <td><label class="badge badge-warning" style="color: aliceblue;">Dans Une Mission</label></td>
+            {% endif %}
             <td><a href="{% url 'modifier_technicien' tc.id %}"><button type="button" class="btn btn-success btn-sm">Modifier</button></a>
               <a href="{% url 'supp_tech' tc.id %}"><button type="button" class="btn btn-danger btn-sm">Supprimer</button></a></td>
             {% endfor %}
