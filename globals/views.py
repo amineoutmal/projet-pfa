@@ -16,6 +16,7 @@ from django.contrib.sessions.models import Session
 
 
 
+
 # Login INSTRUCTIONS
 
 def checkclient(login,password):
@@ -47,12 +48,18 @@ def loginPage(request):
         passwords= request.POST.get('password')
         if checkclient(logins,passwords)=="true":
             request.session['id_client']= Client.objects.filter(login=logins).values('id')[0]['id']
-            return redirect('acceuil')
+            request.session['client_nom'] = Client.objects.filter(login=logins).values('nom')[0]['nom']
+            request.session['client_email'] = Client.objects.filter(login=logins).values('email')[0]['email']
+            return redirect('acceuilclient')
         elif checktechnicien(logins,passwords)=="true":
             request.session['technicien_id'] = Technicien.objects.filter(login=logins).values('id')[0]['id']
+            request.session['technicien_nom'] = Technicien.objects.filter(login=logins).values('nom')[0]['nom']
+            request.session['technicien_email'] = Technicien.objects.filter(login=logins).values('email')[0]['email']
             return redirect('acceuil-technicien')
         elif checkadmin(logins,passwords)=="true":
             request.session['admin_id'] = Admin.objects.filter(login=logins).values('id')[0]['id']
+            request.session['admin_nom'] = Admin.objects.filter(login=logins).values('nom')[0]['nom']
+            request.session['admin_email'] = Admin.objects.filter(login=logins).values('email')[0]['email']
             return redirect('dashboard')
         else :
             messages.info(request,'Mot De Passe Ou User Incorrect')
@@ -106,7 +113,7 @@ def registerPage(request):
             
             return redirect('loginPage')
         else:
-             messages.info(request,'Les Deux Mot De Passe Sont Pas Les Memes')
+             messages.info(request,'Les Deux Mot De Passe ne sont pas les mêmes')
             
 
         

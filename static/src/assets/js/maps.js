@@ -15,6 +15,7 @@ $(document).ready(function () {
 		
         document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
         document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+
     });
 });
 

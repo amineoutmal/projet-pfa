@@ -62,12 +62,10 @@
                 <i class="mdi mdi-settings m-auto text-primary"></i> </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                  <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                  <p class="mb-1 mt-3 font-weight-semibold">{{request.session.client_nom}}</p>
+                  <p class="font-weight-light text-muted mb-0">{{request.session.client_email}}</p>
                 </div>
-                <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
+                <a class="dropdown-item" href="{% url 'profileClient' %}">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
                 <a class="dropdown-item" href="{% url 'logout_client' %}">Se Deconnecter<i class="dropdown-item-icon ti-power-off"></i></a>
               </div>
             </li>
@@ -85,7 +83,7 @@
             
             <li class="nav-item nav-category">Main Menu</li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="{% url 'acceuilclient' %}">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
@@ -106,11 +104,13 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'stock' %}">
+                <a class="nav-link" href="{% url 'mes-facture' %}">
                   <i class="menu-icon typcn typcn-document-text"></i>
                   <span class="menu-title">Mes Factures</span>
                 </a>
               </li>
+
+
           
               
 

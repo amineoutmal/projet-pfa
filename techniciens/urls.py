@@ -8,6 +8,8 @@ urlpatterns = [
     path('mes_interventions/',views.mes_interventions,name='mes_interventions'),
     path('track_interv_technicien/<int:pk>',views.track_interv_technicien,name='track_interv_technicien'),
     path('terminer/<int:pk>',views.terminer,name='terminer'),
+    path('profile/',views.profile,name='profile'),
+
 
     
 

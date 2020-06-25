@@ -9,13 +9,11 @@
             <h2 class="text-center mb-4">Inscription</h2>
             <div class="auto-form-wrapper">
               {% for msg in messages %}
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Erreur : </strong> {{msg}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        {% endfor %}
+              <script>
+                swal("{{ msg }}", "", "error");
+              </script>
+              {% endfor %}
+              
               <form action="#" method="POST">
                 {% csrf_token %}
 

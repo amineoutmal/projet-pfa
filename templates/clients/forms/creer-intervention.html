@@ -38,18 +38,19 @@
                                 <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                 <tr>
                                     <td class="col-md-4">
-                                        <select class="form-control" id="select-1" name="equipement">
+                                        <select class="form-control" id="select-1" name="equipements">
                                           {% for eq in equipement %}
-                                             <option value="{{eq.id}}">{{eq.nom_equipement}}</option>
-                                             
-                                             {% endfor %}	                                        
+                                             <option value="{{eq.id}}">{{eq.nom_equipement}}</option>                  
+                                          {% endfor %}	                                        
                                             </select>
                                     </td>
-                                    <td></td>
+                                    <td>
+
+                                          
+                                   </td>
                                     <td>
                                        
                                     </td>
-                                    <td></td>
                                     <td class="text-right"><button type="button" class="btn btn-danger btn-sm rm">Supprimer</button></td>
                                 </tr>
 

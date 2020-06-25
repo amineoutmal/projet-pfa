@@ -1,8 +1,22 @@
 {% extends "../include/baseclient.html" %}
 {%  block content %}
-<style>
+<div align="right">
 
-</style>
+  <div class="col-md-2">
+    <div class="page-header-toolbar">
+      
+     
+        <div class="dropdown ml-lg-auto ml-6 toolbar-item">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownexport" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownexport">
+            <a class="dropdown-item" href="{% url 'csv-interv' %}">Export as CSV</a>
+          
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</br>
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
@@ -45,9 +59,14 @@
                     <label class="badge badge-info">En Cours</label>
                     {% elif interv.etat == '2' %}
                     <label class="badge badge-primary">Affecter</label>
-
-                    {% else %}
-                    <label class="badge badge-success">Terminer</label>
+                    {% elif interv.etat == '3' %}
+                    <label class="badge badge-success">Terminer par technicien</label>
+                    {% elif interv.etat == '4' %}
+                    <label class="badge badge-info">Traitement</label>
+                    {% elif interv.etat == '5' %}
+                    <label class="badge badge-danger">Non Payé</label>
+                    {% elif interv.etat == '6' %}
+                    <label class="badge badge-danger">Cloturé</label>
                     {% endif %}
             </span></td>
 
@@ -95,10 +114,13 @@
                       {% elif interv.etat == '1' %}
                       <p>en attend l'affectation d'un technicien</p>
                       {% elif interv.etat == '2' %}
-                      <a href="{% url 'track_interv' interv.id %}"><button type="button" class="btn btn-success btn-rounded">Marker Comme Terminer</button></a>
-
-                      {% else %}
-                      <a href=""><button type="button" class="btn btn-purple btn-rounded">Facture</button></a>
+                      <a href=""><button type="button" class="btn btn-success btn-rounded" disabled>Marker Comme Terminer</button></a>
+                      {% elif interv.etat == '3' %}
+                      <a href="{% url 'valider_intervention' interv.id %}"><button type="button" class="btn btn-success btn-rounded">Marker Comme Terminer</button></a>
+                      {% elif interv.etat == '4' %}
+                      <p>en attend De Facturation</p>
+                      {% elif interv.etat == '5' %}
+                      <a href="{% url 'mes-facture'%}"><button type="button" class="btn btn-primary btn-rounded" >Prés À Payé</button></a>
                       {% endif %}
                       
                      

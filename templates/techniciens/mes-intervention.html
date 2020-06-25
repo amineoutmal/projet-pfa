@@ -84,10 +84,10 @@
                     <td class="hidden-print no-js" data-label="Actions">
                       {% if interv.etat == '2' %}
                       <a href="{% url 'track_interv_technicien' interv.id %}"><button type="button" class="btn btn-primary btn-rounded">Localiser</button></a>
-                      <a  data-toggle="modal" data-target="#modalvalider{{interv.id}}"><button type="button" class="btn btn-success btn-rounded">J'ai Terminer</button></a>
+                      <a href="{% url 'terminer' interv.id %}"><button type="button" class="btn btn-success btn-rounded">J'ai Terminer</button></a>
 
-                      {% elif interv.etat == '3' %}
-                      <p>Terminer , Voir Devis</p>
+                      {% elif interv.etat == '3' or  interv.etat == '4'%}
+                      <p>En Attend Payment</p>
                   
                     
                       {% endif %}
@@ -97,18 +97,19 @@
                        
                     </td>
                     </tr>
-<!--Modal: modalvalider-->
+
+   <!-- Bootstrap Modal Signup Popup Form -->
+
+<!--Modal: modalvalider
 <div class="modal fade top" id="modalvalider{{interv.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 aria-hidden="true" data-backdrop="true">
 <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
-  <!--Content--> 
   <div class="modal-content">
     <div class="alert alert-danger" role="alert" align="center">
       Attention : Ne Pas Valider Si Vous n'avez Pas Terminer
     </div>
 
     
-    <!--Body-->
     <div class="modal-body">
       <div class="row d-flex justify-content-center align-items-center">
 
@@ -120,10 +121,9 @@ aria-hidden="true" data-backdrop="true">
       </div>
     </div>
   </div>
-  <!--/.Content-->
 </div>
 </div>
-                    
+       -->             
                     {% endfor %}
                     </tbody>
             </table>

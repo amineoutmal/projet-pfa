@@ -1,6 +1,22 @@
 {% extends "../include/base.html" %}
 {%  block content %}
+<div align="right">
 
+  <div class="col-md-2">
+    <div class="page-header-toolbar">
+      
+     
+        <div class="dropdown ml-lg-auto ml-6 toolbar-item">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownexport" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownexport">
+            <a class="dropdown-item" href="{% url 'csv-intervention' %}">Export as CSV</a>
+          
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</br>
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
@@ -51,8 +67,12 @@
                 {% elif interv.etat == '2' %}
                 <label class="badge badge-info">Affecter</label>
 
+                {% elif interv.etat == '3' %}
+                <label class="badge badge-success">Valider Par Technicien</label>
+                {% elif interv.etat == '4' %}
+                <label class="badge badge-success">Valider Par Client</label>
                 {% else %}
-                <label class="badge badge-success">Terminer</label>
+                <label class="badge badge-danger">Close</label>
 
                 {% endif %}
               </span>   
@@ -101,7 +121,7 @@
                 
                 <p>Fin : non Défini</p>
                 <p>Durée : non Défini</p>
-                {% elif interv.etat == '3' %}
+                {% elif interv.etat == '3' or interv.etat == '4' or interv.etat == '5' or interv.etat == '6'%}
                 <p>Fin : {{interv.date_fin}}</p>
                 <p>Durée : {{interv.durée_mission}} Heurs</p>
 
@@ -111,19 +131,28 @@
               
             <td class="hidden-print no-js" data-label="Actions">
               {% if interv.etat == '0' or interv.etat == '1'%}
-              <a class="btn-floating btn-sm btn-secondary" ><i class="fas fa-trash-alt"></i></a>
               <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#affecteretch{{interv.id}}">Affecter</button>
               {% elif interv.etat == '2' %}
               <a href="{% url 'track_interv' interv.id %}"><button type="button" class="btn btn-primary btn-rounded">Localiser</button></a>
 
               {% elif interv.etat == '3' %}
-              <button type="button" class="btn btn-primary btn-rounded">Facturation</button>
+              <a href="{% url 'facturer' interv.id %}"><button type="button" class="btn btn-primary btn-rounded" disabled>Facturation</button></a>
+
+              {% elif interv.etat == '4' %}
+              <a href="{% url 'facturer' interv.id %}"><button type="button" class="btn btn-primary btn-rounded">Facturation</button></a>
+
+              {% else %}
+              <a href="{% url 'facturer' interv.id %}"><button type="button" class="btn btn-primary btn-rounded">Voir Facture</button></a>
+
               {% endif %}
               
 
             </td>
                   </tr>
-                  <!--Modal: modalvalider-->
+
+      
+
+<!--Modal: modalvalider-->
 <div class="modal fade top" id="affecteretch{{interv.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 aria-hidden="true" data-backdrop="true">
 <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
@@ -243,7 +272,7 @@ aria-hidden="true" data-backdrop="true">
                               
                               <p>Fin : non Défini</p>
                               <p>Durée : non Défini</p>
-                              {% elif interv.etat == '3' %}
+                              {% elif interv.etat == '3' or interv.etat == '4' or interv.etat == '5' or interv.etat == '6'%}
                               <p>Fin : {{interv.date_fin}}</p>
                               <p>Durée : {{interv.durée_mission}} Heurs</p>
               
@@ -251,8 +280,6 @@ aria-hidden="true" data-backdrop="true">
                 
                               </td>                           
                               <td class="hidden-print no-js" data-label="Actions">
-                              <a class="btn-floating btn-sm btn-secondary" href=""><i class="fas fa-bullseye"></i></a>
-                              <a class="btn-floating btn-sm btn-secondary" data-toggle="modal" data-target=""><i class="fas fa-trash-alt"></i></a>
                               <button type="button" class="btn btn-primary btn-rounded">Affecter</button>
                             </td>
                                   </tr>
@@ -286,14 +313,14 @@ aria-hidden="true" data-backdrop="true">
             </thead>
               <tbody>
                 {% for interv in All_intervention %}
-                {% if interv.etat == '4'  %}
+                {% if interv.etat == '6'  %}
                 <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
                   <td class="text-center td-checklist no-js"><label for="selection_85848_" onclick="event.stopPropagation()"><input type="checkbox" id="selection_85848_" name="selection[85848]" value="1" class="js-selection" data-id="85848"></label></td>
                   <td data-label="N°&nbsp;">{{interv.id}}</td>
                   <td data-label="Titre&nbsp;">{{interv.Titre_intervention}}<span class="label label-default" style="font-size:.9em;">Nouveau</span></td>
                   <td data-label="Statut&nbsp;">
                     <span class="label label-primary" style="font-size:.9em;">
-                      <label class="badge badge-success">Terminer</label>
+                      <label class="badge badge-danger">Close</label>
                     
                     </span>   
                   </td>
@@ -337,14 +364,14 @@ aria-hidden="true" data-backdrop="true">
                     
                     <p>Fin : non Défini</p>
                     <p>Durée : non Défini</p>
-                    {% elif interv.etat == '4' %}
+                    {% elif interv.etat == '4' or interv.etat == '5' or interv.etat == '6'%}
                     <p>Fin : {{interv.date_fin}}</p>
                     <p>Durée : {{interv.durée_mission}} Heurs</p>
     
                     {% endif %}
       
                     </td>                  <td class="hidden-print no-js" data-label="Actions">
-                    <button type="button" class="btn btn-primary btn-rounded">Voir Fiche</button>
+                      <a href="{% url 'facturer' interv.id %}"><button type="button" class="btn btn-primary btn-rounded">Voir Fiche</button></a>
 
                   </td>
                         </tr>

@@ -1,0 +1,79 @@
+{% extends "../include/baseclient.html" %}
+{%  block content %}
+<style>
+
+</style>
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="table-responsive table-rows-collapse">
+            <table class="table table-bordered table-condensed table-hover table-rows-collapse">
+              
+                <thead>
+                <tr>
+                                          <th class="display_a_on_hover th-code_id" scope="col">N°&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=id&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Numéro identifiant </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_nom" scope="col">intervention&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=iss_nom&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Titre </span></a></span></th>
+                                          <th class="display_a_on_hover th-iss_status" scope="col">Etat&nbsp;<span class="hidden-print"><a class="btn btn-default btn-xs" href="?page_nbr=1&amp;order_by=status&amp;order_sort=ASC">▼<span class="sr-only">Classement ascendant colonne Statut </span></a></span></th>
+                                        <th class="th-is_fav hidden-print" scope="col">Action</th>
+                      </tr>
+              </thead>
+                <tbody>
+                    {%csrf_token%}
+                 
+            {% for interv in intervention %}
+            <tr data-onclick="issue_edit.php?issue_id=85848&amp;readonly=true">
+
+            <td data-label="N°&nbsp;">{{interv.id}}</td>
+            <td data-label="Statut&nbsp;">
+            <span class="label label-default" style="font-size:.9em;"></span>
+            {{interv.Titre_intervention}}
+            </td>
+            <td data-label="Priorité&nbsp;">
+            <span class="label label-primary" style="font-size:.9em;">
+            
+              {% if interv.etat == '5' %}
+              <label class="badge badge-warning">Non Payé</label>
+
+              {% elif interv.etat == '6' %}
+              <label class="badge badge-success">Payé</label>
+
+              {% endif %}
+                    
+                    
+            </span></td>
+
+           
+
+            
+                    <td class="hidden-print no-js" data-label="Actions">
+                      {% if interv.etat == '5' %}
+                      <a href=""><button type="button" class="btn btn-success btn-rounded">Payé</button></a>
+                      <a href=""><button type="button" class="btn btn-primary btn-rounded">Voir Facture</button></a>
+
+                    {% elif interv.etat == '6' %}
+                    <a href=""><button type="button" class="btn btn-primary btn-rounded">Voir Facture</button></a>
+                   {% endif %}
+
+                    
+                    </td>
+                    </tr>
+
+
+
+<!--Modal: modalCookie-->
+{% endfor %}
+
+                    </tbody>
+            </table>
+            </div>
+        </div>
+ 
+     
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      </div>
+     
+
+{%  endblock content %}

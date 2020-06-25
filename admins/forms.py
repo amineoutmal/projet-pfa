@@ -30,13 +30,25 @@ class clientform(ModelForm):
                 'matricule_id' : forms.TextInput(attrs={'class':'form-control'}),
                 'adresse' : forms.TextInput(attrs={'class':'form-control'}),
         }
+class adminform(ModelForm):
+    class Meta:
+        model = Admin
+        fields = ('nom','tel','email','login','password')
+        widgets = {
+                'nom' : forms.TextInput(attrs={'class':'form-control'}),
+                'tel' : forms.TextInput(attrs={'class':'form-control'}),
+                'email' : forms.TextInput(attrs={'class':'form-control'}),
+                'login' : forms.TextInput(attrs={'class':'form-control'}),
+                'password' : forms.TextInput(attrs={'class':'form-control'}),
+        }
 class stockform(ModelForm):
     class Meta:
         model = Equipement
-        fields = ('nom_equipement','qte_stock')
+        fields = ('nom_equipement','qte_stock','prix_equipement')
         widgets = {
                 'nom_equipement' : forms.TextInput(attrs={'class':'form-control'}),
                 'qte_stock' : forms.TextInput(attrs={'class':'form-control'}),
+                'prix_equipement' :forms.TextInput(attrs={'class':'form-control'}),
                
         }
 class panneform(ModelForm):
